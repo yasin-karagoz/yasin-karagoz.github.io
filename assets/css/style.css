@@ -274,11 +274,12 @@ h6 {
   top: 0;
   left: 0;
   position: fixed;
-  background: rgba(9, 9, 9, 0.6);
+  background: rgba(0, 0, 128, 0.6); /* semi-transparent dark blue */
   overflow: hidden;
   display: none;
   transition: ease-in-out 0s;
 }
+
 
 .mobile-nav-active {
   overflow: hidden;

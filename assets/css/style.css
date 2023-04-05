@@ -235,14 +235,15 @@ h6 {
   left: 15px;
   z-index: 9999;
   overflow-y: auto;
-  background: rgba(0, 0, 0, 0.7);
+  background: #B0E0E6; /* light blue background */
   transition: ease-in-out 0s;
   opacity: 0;
   visibility: hidden;
   border-radius: 10px;
   padding: 10px 0;
-  border: 2px solid rgba(255, 255, 255, 0.12);
+  border: 2px solid #D3D3D3; /* light gray border */
 }
+
 
 .mobile-nav * {
   margin: 0;

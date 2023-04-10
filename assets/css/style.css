@@ -274,7 +274,7 @@ h6 {
   top: 0;
   left: 0;
   position: fixed;
-  background: rgba(0, 0, 128, 0.6); /* semi-transparent dark blue */
+  background: rgb(144, 238, 144); /* pale green */
   overflow: hidden;
   display: none;
   transition: ease-in-out 0s;

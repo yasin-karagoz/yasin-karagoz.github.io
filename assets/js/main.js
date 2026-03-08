@@ -116,20 +116,23 @@
   }
 
   // Typed.js intro animation
-  if ($('.typed').length) {
-    new Typed('.typed', {
-      strings: [
-        'Staff Software Engineer',
-        'Cloud Infrastructure Engineer',
-        'DevOps Engineer',
-        'RHEL Certified Admin',
-      ],
-      typeSpeed: 55,
-      backSpeed: 30,
-      backDelay: 1800,
-      loop: true,
-    });
-  }
+  $(document).ready(function () {
+    if ($('.typed').length) {
+      new Typed('.typed', {
+        strings: [
+          'Staff Software Engineer',
+          'Cloud Infrastructure Engineer',
+          'DevOps Engineer',
+          'RHEL Certified Admin',
+        ],
+        typeSpeed: 55,
+        backSpeed: 30,
+        backDelay: 2000,
+        startDelay: 300,
+        loop: true,
+      });
+    }
+  });
 
   // jQuery counterUp
   $('[data-toggle="counter-up"]').counterUp({

@@ -36,8 +36,6 @@
 
         if (!$('#header').hasClass('header-top')) {
           $('#header').addClass('header-top');
-          console.log('Header-top activated');
-
           var fullName = document.querySelector('#full-name');
           fullName.innerHTML = 'Yasin Karagoz';
 
@@ -115,6 +113,22 @@
     });
   } else if ($('.mobile-nav, .mobile-nav-toggle').length) {
     $('.mobile-nav, .mobile-nav-toggle').hide();
+  }
+
+  // Typed.js intro animation
+  if ($('.typed').length) {
+    new Typed('.typed', {
+      strings: [
+        'Staff Software Engineer',
+        'Cloud Infrastructure Engineer',
+        'DevOps Engineer',
+        'RHEL Certified Admin',
+      ],
+      typeSpeed: 55,
+      backSpeed: 30,
+      backDelay: 1800,
+      loop: true,
+    });
   }
 
   // jQuery counterUp

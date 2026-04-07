@@ -7,7 +7,25 @@
 !(function ($) {
   'use strict';
 
-  // Nav Menu
+  // Scroll-based header shrink
+  function handleHeaderScroll() {
+    if ($(window).scrollTop() > 80) {
+      if (!$('#header').hasClass('header-top')) {
+        $('#header').addClass('header-top');
+        $('#intro-greeting').hide();
+      }
+    } else {
+      if ($('#header').hasClass('header-top')) {
+        $('#header').removeClass('header-top');
+        $('#intro-greeting').show();
+      }
+    }
+  }
+
+  $(window).on('scroll', handleHeaderScroll);
+  handleHeaderScroll();
+
+  // Nav Menu - smooth scroll + active state
   $(document).on('click', '.nav-menu a, .mobile-nav a', function (e) {
     if (
       location.pathname.replace(/^\//, '') ==
@@ -24,31 +42,8 @@
           $(this).closest('li').addClass('active');
         }
 
-        if (hash == '#header') {
-          var custom_greet = document.querySelector('#intro-greeting');
-          custom_greet.style.display = 'block';
-          var fullName = document.querySelector('#full-name');
-          fullName.innerHTML = 'Yasin Karagoz';
-          $('#header').removeClass('header-top');
-          $('section').removeClass('section-show');
-          return;
-        }
-
-        if (!$('#header').hasClass('header-top')) {
-          $('#header').addClass('header-top');
-          var fullName = document.querySelector('#full-name');
-          fullName.innerHTML = 'Yasin Karagoz';
-
-          var custom_greet = document.querySelector('#intro-greeting');
-          custom_greet.style.display = 'none';
-          setTimeout(function () {
-            $('section').removeClass('section-show');
-            $(hash).addClass('section-show');
-          }, 350);
-        } else {
-          $('section').removeClass('section-show');
-          $(hash).addClass('section-show');
-        }
+        var scrollTarget = hash === '#header' ? 0 : $(hash).offset().top - 80;
+        $('html, body').animate({ scrollTop: scrollTarget }, 400);
 
         if ($('body').hasClass('mobile-nav-active')) {
           $('body').removeClass('mobile-nav-active');
@@ -63,22 +58,19 @@
     }
   });
 
-  // Activate/show sections on load with hash links
-  if (window.location.hash) {
-    var initial_nav = window.location.hash;
-    if ($(initial_nav).length) {
-      $('#header').addClass('header-top');
-      $('.nav-menu .active, .mobile-nav .active').removeClass('active');
-      $('.nav-menu, .mobile-nav')
-        .find('a[href="' + initial_nav + '"]')
-        .parent('li')
-        .addClass('active');
-      setTimeout(function () {
-        $('section').removeClass('section-show');
-        $(initial_nav).addClass('section-show');
-      }, 350);
-    }
-  }
+  // Highlight active nav item on scroll
+  $(window).on('scroll', function () {
+    var scrollPos = $(window).scrollTop() + 100;
+    $('section').each(function () {
+      var sectionTop = $(this).offset().top;
+      var sectionBottom = sectionTop + $(this).outerHeight();
+      if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+        var id = $(this).attr('id');
+        $('.nav-menu a, .mobile-nav a').parent('li').removeClass('active');
+        $('.nav-menu a[href="#' + id + '"], .mobile-nav a[href="#' + id + '"]').parent('li').addClass('active');
+      }
+    });
+  });
 
   // Mobile Navigation
   if ($('.nav-menu').length) {

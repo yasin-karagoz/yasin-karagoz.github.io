@@ -346,33 +346,18 @@ h6 {
 --------------------------------------------------------------*/
 section {
   overflow: hidden;
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 140px;
-  bottom: 100%;
-  opacity: 0;
-  z-index: 2;
-}
-
-section.section-show {
-  top: 70px;
-  bottom: auto;
   opacity: 1;
-  padding-bottom: 0px;
+  z-index: 2;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  scroll-margin-top: 90px;
 }
 
 section .container {
   background: rgba(0, 0, 0, 0);
   padding: 30px;
-}
-
-@media (max-width: 768px) {
-  section {
-    top: 120px;
-  }
-  section.section-show {
-    top: 80px;
-  }
 }
 
 .section-title h2 {
@@ -1257,19 +1242,13 @@ section .container {
 --------------------------------------------------------------*/
 .skills-section {
   overflow: hidden;
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 140px;
-  bottom: 100%;
-  opacity: 0;
-  z-index: 2;
-}
-
-.skills-section.section-show {
-  top: 70px;
-  bottom: auto;
   opacity: 1;
-  padding-bottom: 0;
+  z-index: 2;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  scroll-margin-top: 90px;
 }
 
 .skills-section .container {
@@ -1318,14 +1297,6 @@ section .container {
   margin-right: 6px;
 }
 
-@media (max-width: 768px) {
-  .skills-section {
-    top: 120px;
-  }
-  .skills-section.section-show {
-    top: 80px;
-  }
-}
 
 /*--------------------------------------------------------------
 # Skills Grid
